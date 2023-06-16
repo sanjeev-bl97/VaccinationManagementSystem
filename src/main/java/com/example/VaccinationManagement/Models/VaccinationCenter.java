@@ -1,5 +1,6 @@
 package com.example.VaccinationManagement.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,6 +28,7 @@ public class VaccinationCenter {
     private int doseCapacity;
 
     @OneToMany(mappedBy = "vaccinationCenter",cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Doctor> doctorsArrayList = new ArrayList<>();
 
 

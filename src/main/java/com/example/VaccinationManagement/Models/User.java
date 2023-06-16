@@ -1,10 +1,12 @@
 package com.example.VaccinationManagement.Models;
 
 import com.example.VaccinationManagement.Enums.Gender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -29,9 +31,11 @@ public class User {
     private String mobileNo;
 
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+    @JsonIgnore
     private Dose dose;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    private ArrayList<Appointment> appointmentList = new ArrayList<>();
+    @JsonIgnore
+    private List<Appointment> appointmentList = new ArrayList();
 
 }

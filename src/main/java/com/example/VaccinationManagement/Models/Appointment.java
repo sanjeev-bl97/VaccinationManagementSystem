@@ -1,5 +1,6 @@
 package com.example.VaccinationManagement.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -7,7 +8,7 @@ import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
-@Table(name = "appoinments")
+@Table(name = "appointments")
 @Data
 public class Appointment {
 
@@ -15,16 +16,18 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private Date appoinmentDate;
+    private Date appointmentDate;
 
-    private LocalTime appoinmentTime;
+    private LocalTime appointmentTime;
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnore
     private User user;
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnore
     private Doctor doctor;
 
 }

@@ -1,6 +1,7 @@
 package com.example.VaccinationManagement.Models;
 
 import com.example.VaccinationManagement.Enums.Gender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,13 +31,15 @@ public class Doctor {
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnore
     private VaccinationCenter vaccinationCenter;
 
 
 
 
     @OneToMany(mappedBy = "doctor",cascade = CascadeType.ALL)
-    private List<Appointment> appoinmentsList = new ArrayList<>();
+    @JsonIgnore
+    private List<Appointment> appointmentsList = new ArrayList();
 
 
 }
